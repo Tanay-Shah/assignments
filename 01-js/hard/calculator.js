@@ -16,6 +16,37 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
-
+class Calculator {
+  constructor() {
+    this.fin = 0;
+  }
+  add(a) {
+    this.fin += a;
+  }
+  multiply(a) {
+    this.fin *= a;
+  }
+  subtract(a) {
+    this.fin -= a;
+  }
+  divide(a) {
+    if (a === 0) {
+      throw new Error("Error:Division By Zero Gives Infinity");
+    }
+    this.fin = this.fin / a;
+  }
+  clear() {
+    this.fin = 0;
+  }
+  getResult() {
+    return this.fin;
+  }
+  calculate(myString) {
+    this.fin = eval(myString.trim());
+    if (!Number.isFinite(this.fin)) {
+      throw new Error();
+    }
+  }
+}
+// npx jest ./tests/calculator.test.js
 module.exports = Calculator;
